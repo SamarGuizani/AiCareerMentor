@@ -7,7 +7,7 @@ node_modules/
 .yarn/install-state.gz
 *.node
 pnpm-lock.yaml
-package-lock.json
+# Keep package-lock.json for npm projects
 
 # testing
 /coverage
