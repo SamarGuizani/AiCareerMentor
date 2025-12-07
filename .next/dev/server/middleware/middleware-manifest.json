@@ -1,0 +1,31 @@
+{
+  "sorted_middleware": [],
+  "middleware": {
+    "/": {
+      "files": [
+        "server/edge/chunks/Downloads_aicareermentor_a9813a7e._.js",
+        "server/edge/chunks/[root-of-the-server]__21996ff1._.js",
+        "server/edge/chunks/turbopack-Downloads_aicareermentor_edge-wrapper_60f6d291.js"
+      ],
+      "name": "middleware",
+      "page": "/",
+      "matchers": [
+        {
+          "regexp": "/:nextData(_next/data/[^/]{1,})?/((?!_next/static|_next/image|favicon.ico|.*.(?:svg|png|jpg|jpeg|gif|webp)$).*){(\\\\.json)}?",
+          "originalSource": "/((?!_next/static|_next/image|favicon.ico|.*.(?:svg|png|jpg|jpeg|gif|webp)$).*)"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "development",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "lt9x3obTu35rijo6/qiNA3ukLxrAukeaXc9oHM+GZ4o=",
+        "__NEXT_PREVIEW_MODE_ID": "42731b45111f419b38c8725406024537",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "c08a07c76591e8ee0cddf03e87ee9e0ef0344ab98281f3033d323b73108ef595",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "12511c7f2deffa1fced870816c299a69291e4901860d44e3be3f081eef1c8548"
+      }
+    }
+  },
+  "instrumentation": null,
+  "functions": {}
+}
