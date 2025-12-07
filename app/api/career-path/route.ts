@@ -216,3 +216,66 @@ export async function GET() {
     return NextResponse.json({ error: "Failed to fetch career path" }, { status: 500 })
   }
 }
+
+export async function POST() {
+  try {
+    const supabase = await createClient()
+
+    // Get authenticated user
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser()
+
+    if (userError || !user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    }
+
+    // Get user's latest quiz answers
+    const { data: quizData, error: quizError } = await supabase
+      .from("quiz_results")
+      .select("quiz_answers")
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false })
+      .limit(1)
+
+    if (quizError || !quizData || quizData.length === 0) {
+      return NextResponse.json({ error: "No quiz answers found. Please complete the quiz first." }, { status: 404 })
+    }
+
+    // Generate new career path with AI
+    const generatedPath = await generateCareerPathWithAI(quizData[0].quiz_answers)
+
+    // Delete old career paths and insert new one
+    await supabase.from("career_paths").delete().eq("user_id", user.id)
+
+    // Save generated career path
+    const { data: savedPath, error: saveError } = await supabase
+      .from("career_paths")
+      .insert({
+        user_id: user.id,
+        phase_1: generatedPath.phase_1,
+        phase_2: generatedPath.phase_2,
+        phase_3: generatedPath.phase_3,
+        phase_4: generatedPath.phase_4,
+      })
+      .select()
+      .single()
+
+    if (saveError) {
+      console.error("[v0] Error saving career path:", saveError)
+      // Return the generated path even if save fails
+      return NextResponse.json({
+        phase_1: generatedPath.phase_1,
+        phase_2: generatedPath.phase_2,
+        phase_3: generatedPath.phase_3,
+        phase_4: generatedPath.phase_4,
+      })
+    }
+
+    return NextResponse.json(savedPath)
+  } catch (error) {
+    console.error("[v0] Error regenerating career path:", error)
+    return NextResponse.json({ error: "Failed to regenerate career path" }, { status: 500 })
+  }
+}
