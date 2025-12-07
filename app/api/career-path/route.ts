@@ -164,7 +164,16 @@ export async function GET() {
       .order("created_at", { ascending: false })
       .limit(1)
 
-    if (error) throw error
+    if (error) {
+      // If table doesn't exist, try to create it or return error
+      if (error.code === 'PGRST205' || error.message?.includes('schema cache')) {
+        console.error("[v0] Table career_paths does not exist. Please run the SQL script in Supabase.")
+        return NextResponse.json({ 
+          error: "Database table not found. Please run the SQL setup script in Supabase SQL Editor." 
+        }, { status: 500 })
+      }
+      throw error
+    }
 
     // If no career path exists, generate one with AI using quiz answers
     if (!data || data.length === 0) {

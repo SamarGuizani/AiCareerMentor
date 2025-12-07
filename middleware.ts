@@ -1,8 +1,8 @@
 import type { NextRequest } from "next/server"
+import { updateSession } from "@/lib/supabase/middleware"
 
-// Middleware disabled - will be enabled once Supabase is fully configured
 export async function middleware(request: NextRequest) {
-  // return await updateSession(request)
+  return await updateSession(request)
 }
 
 export const config = {

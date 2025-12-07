@@ -14,7 +14,30 @@ function createClient() {
     const key = ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhxeGJ2eXF5enVka3BnbGN3cWp3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQzMzQxMjQsImV4cCI6MjA3OTkxMDEyNH0.JnXYijg3gHkH5qF-mTuNEtaQ5zzteNteOl2S5tL_AzU");
     if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$createBrowserClient$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createBrowserClient"])(url, key);
+    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$createBrowserClient$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createBrowserClient"])(url || "", key || "", {
+        cookies: {
+            getAll () {
+                return document.cookie.split("; ").map((cookie)=>{
+                    const [name, ...rest] = cookie.split("=");
+                    return {
+                        name,
+                        value: decodeURIComponent(rest.join("="))
+                    };
+                });
+            },
+            setAll (cookiesToSet) {
+                cookiesToSet.forEach(({ name, value, options })=>{
+                    let cookieString = `${name}=${encodeURIComponent(value)}`;
+                    if (options?.path) cookieString += `; path=${options.path}`;
+                    if (options?.maxAge) cookieString += `; max-age=${options.maxAge}`;
+                    if (options?.domain) cookieString += `; domain=${options.domain}`;
+                    if (options?.sameSite) cookieString += `; samesite=${options.sameSite}`;
+                    if (options?.secure) cookieString += `; secure`;
+                    document.cookie = cookieString;
+                });
+            }
+        }
+    });
 }
 }),
 "[project]/Downloads/aicareermentor/app/quiz/page.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {

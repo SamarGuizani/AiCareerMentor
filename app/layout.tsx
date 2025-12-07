@@ -7,11 +7,15 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'AI Career Mentor - Your Personal Career Guide',
+  description: 'Discover your ideal career path with AI-powered guidance. Take our personalized quiz and get tailored career recommendations.',
   generator: 'v0.app',
   icons: {
     icon: [
+      {
+        url: '/favicon.png',
+        type: 'image/png',
+      },
       {
         url: '/icon-light-32x32.png',
         media: '(prefers-color-scheme: light)',

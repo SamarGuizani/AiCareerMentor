@@ -73,6 +73,8 @@ async function createClient() {
 __turbopack_context__.s([
     "GET",
     ()=>GET,
+    "POST",
+    ()=>POST,
     "runtime",
     ()=>runtime
 ]);
@@ -271,7 +273,18 @@ async function GET() {
         let { data, error } = await supabase.from("career_paths").select("*").eq("user_id", user.id).order("created_at", {
             ascending: false
         }).limit(1);
-        if (error) throw error;
+        if (error) {
+            // If table doesn't exist, try to create it or return error
+            if (error.code === 'PGRST205' || error.message?.includes('schema cache')) {
+                console.error("[v0] Table career_paths does not exist. Please run the SQL script in Supabase.");
+                return __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                    error: "Database table not found. Please run the SQL setup script in Supabase SQL Editor."
+                }, {
+                    status: 500
+                });
+            }
+            throw error;
+        }
         // If no career path exists, generate one with AI using quiz answers
         if (!data || data.length === 0) {
             // Get user's latest quiz answers
@@ -312,6 +325,61 @@ async function GET() {
         console.error("[v0] Error fetching career path:", error);
         return __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
             error: "Failed to fetch career path"
+        }, {
+            status: 500
+        });
+    }
+}
+async function POST() {
+    try {
+        const supabase = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$lib$2f$supabase$2f$server$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["createClient"])();
+        // Get authenticated user
+        const { data: { user }, error: userError } = await supabase.auth.getUser();
+        if (userError || !user) {
+            return __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                error: "Unauthorized"
+            }, {
+                status: 401
+            });
+        }
+        // Get user's latest quiz answers
+        const { data: quizData, error: quizError } = await supabase.from("quiz_results").select("quiz_answers").eq("user_id", user.id).order("created_at", {
+            ascending: false
+        }).limit(1);
+        if (quizError || !quizData || quizData.length === 0) {
+            return __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                error: "No quiz answers found. Please complete the quiz first."
+            }, {
+                status: 404
+            });
+        }
+        // Generate new career path with AI
+        const generatedPath = await generateCareerPathWithAI(quizData[0].quiz_answers);
+        // Delete old career paths and insert new one
+        await supabase.from("career_paths").delete().eq("user_id", user.id);
+        // Save generated career path
+        const { data: savedPath, error: saveError } = await supabase.from("career_paths").insert({
+            user_id: user.id,
+            phase_1: generatedPath.phase_1,
+            phase_2: generatedPath.phase_2,
+            phase_3: generatedPath.phase_3,
+            phase_4: generatedPath.phase_4
+        }).select().single();
+        if (saveError) {
+            console.error("[v0] Error saving career path:", saveError);
+            // Return the generated path even if save fails
+            return __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                phase_1: generatedPath.phase_1,
+                phase_2: generatedPath.phase_2,
+                phase_3: generatedPath.phase_3,
+                phase_4: generatedPath.phase_4
+            });
+        }
+        return __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json(savedPath);
+    } catch (error) {
+        console.error("[v0] Error regenerating career path:", error);
+        return __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+            error: "Failed to regenerate career path"
         }, {
             status: 500
         });

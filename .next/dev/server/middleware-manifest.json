@@ -3,9 +3,14 @@
   "middleware": {
     "/": {
       "files": [
-        "server/edge/chunks/Downloads_aicareermentor_a9813a7e._.js",
-        "server/edge/chunks/[root-of-the-server]__21996ff1._.js",
-        "server/edge/chunks/turbopack-Downloads_aicareermentor_edge-wrapper_60f6d291.js"
+        "server/edge/chunks/Downloads_aicareermentor_cd65cab4._.js",
+        "server/edge/chunks/5d1fd_@opentelemetry_api_build_esm_54981c6f._.js",
+        "server/edge/chunks/5d1fd_@supabase_realtime-js_dist_module_2b5f3fd7._.js",
+        "server/edge/chunks/5d1fd_@supabase_storage-js_dist_module_ff4f32c8._.js",
+        "server/edge/chunks/5d1fd_@supabase_auth-js_dist_module_28ada1af._.js",
+        "server/edge/chunks/5d1fd_ff8e065d._.js",
+        "server/edge/chunks/[root-of-the-server]__294ac07c._.js",
+        "server/edge/chunks/turbopack-Downloads_aicareermentor_edge-wrapper_7e85d543.js"
       ],
       "name": "middleware",
       "page": "/",
@@ -20,9 +25,9 @@
       "env": {
         "__NEXT_BUILD_ID": "development",
         "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "lt9x3obTu35rijo6/qiNA3ukLxrAukeaXc9oHM+GZ4o=",
-        "__NEXT_PREVIEW_MODE_ID": "42731b45111f419b38c8725406024537",
-        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "c08a07c76591e8ee0cddf03e87ee9e0ef0344ab98281f3033d323b73108ef595",
-        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "12511c7f2deffa1fced870816c299a69291e4901860d44e3be3f081eef1c8548"
+        "__NEXT_PREVIEW_MODE_ID": "66fc11c31576bf1f9f1292d996233ebc",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "35c74a066052299fecc74c7144b57d9ede309a570091cce65ff895bb8b59d92b",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "f7af51cb3036fb5486034693b136af9f1db05be39461ae063593fc187a72ffff"
       }
     }
   },

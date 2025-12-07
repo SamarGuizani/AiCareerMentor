@@ -47,3 +47,5 @@ Après le push, vérifiez sur GitHub que tous les fichiers sont bien présents.
 
 ⚠️ **IMPORTANT**: Le fichier `.env.local` est dans `.gitignore` - vos clés API sont protégées!
 
+
+

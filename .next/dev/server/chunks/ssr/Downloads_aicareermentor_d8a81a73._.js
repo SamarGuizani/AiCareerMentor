@@ -139,36 +139,60 @@ function Header() {
     }, this);
 }
 function CareerCard({ phase, index }) {
+    const colors = [
+        {
+            bg: "from-blue-500 to-blue-600",
+            text: "text-blue-600",
+            badge: "bg-blue-100 text-blue-700"
+        },
+        {
+            bg: "from-purple-500 to-purple-600",
+            text: "text-purple-600",
+            badge: "bg-purple-100 text-purple-700"
+        },
+        {
+            bg: "from-green-500 to-green-600",
+            text: "text-green-600",
+            badge: "bg-green-100 text-green-700"
+        },
+        {
+            bg: "from-orange-500 to-orange-600",
+            text: "text-orange-600",
+            badge: "bg-orange-100 text-orange-700"
+        }
+    ];
+    const color = colors[index % colors.length];
+    const icons = [
+        "📚",
+        "💻",
+        "📈",
+        "💼"
+    ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "bg-gray-50 p-6 rounded-xl border border-gray-200",
+        className: "bg-white p-6 rounded-xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-shadow",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "flex items-start gap-6",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex-shrink-0",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center text-2xl",
-                        children: [
-                            "📚",
-                            "💻",
-                            "📈",
-                            "💼"
-                        ][index]
+                        className: `w-20 h-20 bg-gradient-to-br ${color.bg} rounded-xl flex items-center justify-center text-3xl shadow-md`,
+                        children: icons[index] || "📋"
                     }, void 0, false, {
                         fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                        lineNumber: 44,
+                        lineNumber: 53,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                    lineNumber: 43,
+                    lineNumber: 52,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex-grow",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex items-center justify-between mb-3",
+                            className: "flex items-center justify-between mb-4",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                     className: "text-2xl font-bold text-gray-900",
@@ -176,51 +200,19 @@ function CareerCard({ phase, index }) {
                                         "Phase ",
                                         index + 1,
                                         ": ",
-                                        phase.title || phase.phase
+                                        phase.title || phase.phase || `Phase ${index + 1}`
                                     ]
                                 }, void 0, true, {
-                                    fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                    lineNumber: 50,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-sm text-gray-600 bg-white px-3 py-1 rounded-full border border-gray-200",
-                                    children: phase.duration
-                                }, void 0, false, {
-                                    fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                    lineNumber: 53,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                            lineNumber: 49,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "mb-4",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                    className: "text-lg font-semibold text-gray-900 mb-2",
-                                    children: "Skills to Learn:"
-                                }, void 0, false, {
                                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
                                     lineNumber: 59,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "flex flex-wrap gap-2",
-                                    children: (phase.skills || []).map((skill, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "bg-blue-100 text-blue-700 px-3 py-1 rounded-lg text-sm font-medium",
-                                            children: skill
-                                        }, idx, false, {
-                                            fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                            lineNumber: 62,
-                                            columnNumber: 17
-                                        }, this))
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: `text-sm font-semibold ${color.badge} px-4 py-1.5 rounded-full border`,
+                                    children: phase.duration || "Ongoing"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                    lineNumber: 60,
+                                    lineNumber: 62,
                                     columnNumber: 13
                                 }, this)
                             ]
@@ -233,100 +225,174 @@ function CareerCard({ phase, index }) {
                             className: "mb-4",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                    className: "text-lg font-semibold text-gray-900 mb-2",
-                                    children: "Recommended Resources:"
-                                }, void 0, false, {
+                                    className: "text-lg font-semibold text-gray-900 mb-3 flex items-center",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "mr-2",
+                                            children: "🎯"
+                                        }, void 0, false, {
+                                            fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                            lineNumber: 69,
+                                            columnNumber: 15
+                                        }, this),
+                                        "Skills to Learn:"
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                    lineNumber: 70,
+                                    lineNumber: 68,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                                    className: "space-y-1",
-                                    children: (phase.resources || []).map((resource, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                            className: "flex items-center text-gray-600",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "text-green-500 mr-2",
-                                                    children: "✓"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                                    lineNumber: 74,
-                                                    columnNumber: 19
-                                                }, this),
-                                                resource
-                                            ]
-                                        }, idx, true, {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex flex-wrap gap-2",
+                                    children: (phase.skills || []).map((skill, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: `${color.badge} px-3 py-1.5 rounded-lg text-sm font-medium border`,
+                                            children: skill
+                                        }, idx, false, {
                                             fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                            lineNumber: 73,
+                                            lineNumber: 74,
                                             columnNumber: 17
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                    lineNumber: 71,
+                                    lineNumber: 72,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                            lineNumber: 69,
+                            lineNumber: 67,
                             columnNumber: 11
                         }, this),
-                        phase.actionable_steps && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "mb-4",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                    className: "text-lg font-semibold text-gray-900 mb-2",
-                                    children: "Action Steps:"
-                                }, void 0, false, {
+                                    className: "text-lg font-semibold text-gray-900 mb-3 flex items-center",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "mr-2",
+                                            children: "📚"
+                                        }, void 0, false, {
+                                            fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                            lineNumber: 83,
+                                            columnNumber: 15
+                                        }, this),
+                                        "Recommended Resources:"
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                    lineNumber: 83,
-                                    columnNumber: 15
+                                    lineNumber: 82,
+                                    columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                                    className: "space-y-1",
-                                    children: phase.actionable_steps.map((step, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                            className: "flex items-center text-gray-600",
+                                    className: "space-y-2",
+                                    children: (phase.resources || []).map((resource, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                            className: "flex items-start text-gray-700",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "text-blue-500 mr-2",
-                                                    children: "→"
+                                                    className: "text-green-500 mr-2 mt-1",
+                                                    children: "✓"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                                    lineNumber: 87,
-                                                    columnNumber: 21
+                                                    lineNumber: 89,
+                                                    columnNumber: 19
                                                 }, this),
-                                                step
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    children: resource
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                                    lineNumber: 90,
+                                                    columnNumber: 19
+                                                }, this)
                                             ]
                                         }, idx, true, {
                                             fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                            lineNumber: 86,
+                                            lineNumber: 88,
+                                            columnNumber: 17
+                                        }, this))
+                                }, void 0, false, {
+                                    fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                    lineNumber: 86,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                            lineNumber: 81,
+                            columnNumber: 11
+                        }, this),
+                        phase.actionable_steps && phase.actionable_steps.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                    className: "text-lg font-semibold text-gray-900 mb-3 flex items-center",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "mr-2",
+                                            children: "🚀"
+                                        }, void 0, false, {
+                                            fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                            lineNumber: 99,
+                                            columnNumber: 17
+                                        }, this),
+                                        "Action Steps:"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                    lineNumber: 98,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
+                                    className: "space-y-2",
+                                    children: phase.actionable_steps.map((step, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                            className: "flex items-start text-gray-700",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: `${color.text} mr-2 mt-1 font-bold`,
+                                                    children: "→"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                                    lineNumber: 105,
+                                                    columnNumber: 21
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    children: step
+                                                }, void 0, false, {
+                                                    fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                                    lineNumber: 106,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, idx, true, {
+                                            fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                            lineNumber: 104,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                    lineNumber: 84,
+                                    lineNumber: 102,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                            lineNumber: 82,
+                            lineNumber: 97,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                    lineNumber: 48,
+                    lineNumber: 57,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-            lineNumber: 42,
+            lineNumber: 51,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-        lineNumber: 41,
+        lineNumber: 50,
         columnNumber: 5
     }, this);
 }
@@ -339,17 +405,17 @@ function Footer() {
                 children: "© 2025 AI Career Mentor. All rights reserved."
             }, void 0, false, {
                 fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                lineNumber: 104,
+                lineNumber: 122,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-            lineNumber: 103,
+            lineNumber: 121,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-        lineNumber: 102,
+        lineNumber: 120,
         columnNumber: 5
     }, this);
 }
@@ -362,6 +428,8 @@ function CareerPathPage() {
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const loadCareerPath = async ()=>{
             try {
+                setLoading(true);
+                setError(null);
                 const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createClient"])();
                 const { data: { user } } = await supabase.auth.getUser();
                 if (!user) {
@@ -369,17 +437,33 @@ function CareerPathPage() {
                     return;
                 }
                 setUser(user);
-                const response = await fetch("/api/career-path");
+                // Fetch career path - API will generate it automatically if it doesn't exist
+                const response = await fetch("/api/career-path", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
                 if (!response.ok) {
+                    const errorData = await response.json().catch(()=>({}));
                     if (response.status === 404) {
-                        setError("No career path found. Please complete the quiz first.");
+                        setError(errorData.error || "No career path found. Please complete the quiz first.");
                         return;
                     }
-                    throw new Error("Failed to fetch career path");
+                    if (response.status === 401) {
+                        router.push("/auth/login");
+                        return;
+                    }
+                    throw new Error(errorData.error || "Failed to fetch career path");
                 }
                 const data = await response.json();
                 console.log("[v0] Career path loaded:", data);
-                setCareerPath(data);
+                // Validate that we have all required phases
+                if (data && data.phase_1 && data.phase_2 && data.phase_3 && data.phase_4) {
+                    setCareerPath(data);
+                } else {
+                    throw new Error("Invalid career path data received");
+                }
             } catch (err) {
                 console.error("[v0] Error loading career path:", err);
                 setError(err instanceof Error ? err.message : "Failed to load career path");
@@ -395,40 +479,79 @@ function CareerPathPage() {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "min-h-screen bg-gray-50 flex items-center justify-center",
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "text-center",
+                className: "text-center max-w-md mx-auto px-4",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"
+                        className: "animate-spin rounded-full h-16 w-16 border-4 border-blue-600 border-t-transparent mx-auto"
                     }, void 0, false, {
                         fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                        lineNumber: 159,
+                        lineNumber: 198,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "mt-4 text-gray-600 text-lg font-semibold",
+                        className: "mt-6 text-gray-700 text-xl font-semibold",
                         children: "Generating your personalized career path with AI..."
                     }, void 0, false, {
                         fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                        lineNumber: 160,
+                        lineNumber: 199,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "mt-2 text-gray-500 text-sm",
-                        children: "This may take a few moments"
+                        className: "mt-3 text-gray-500 text-sm",
+                        children: "Analyzing your quiz answers and creating a custom roadmap"
                     }, void 0, false, {
                         fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                        lineNumber: 161,
+                        lineNumber: 200,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "mt-6 flex justify-center space-x-2",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "w-2 h-2 bg-blue-600 rounded-full animate-bounce",
+                                style: {
+                                    animationDelay: "0s"
+                                }
+                            }, void 0, false, {
+                                fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                lineNumber: 202,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "w-2 h-2 bg-blue-600 rounded-full animate-bounce",
+                                style: {
+                                    animationDelay: "0.2s"
+                                }
+                            }, void 0, false, {
+                                fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                lineNumber: 203,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "w-2 h-2 bg-blue-600 rounded-full animate-bounce",
+                                style: {
+                                    animationDelay: "0.4s"
+                                }
+                            }, void 0, false, {
+                                fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                lineNumber: 204,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                        lineNumber: 201,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                lineNumber: 158,
+                lineNumber: 197,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-            lineNumber: 157,
+            lineNumber: 196,
             columnNumber: 7
         }, this);
     }
@@ -438,7 +561,7 @@ function CareerPathPage() {
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Header, {}, void 0, false, {
                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                    lineNumber: 170,
+                    lineNumber: 214,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -451,7 +574,7 @@ function CareerPathPage() {
                                 children: "Career Path"
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                lineNumber: 173,
+                                lineNumber: 217,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -459,7 +582,7 @@ function CareerPathPage() {
                                 children: error
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                lineNumber: 174,
+                                lineNumber: 218,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -468,45 +591,130 @@ function CareerPathPage() {
                                 children: "Take the Quiz →"
                             }, void 0, false, {
                                 fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                lineNumber: 175,
+                                lineNumber: 219,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                        lineNumber: 172,
+                        lineNumber: 216,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                    lineNumber: 171,
+                    lineNumber: 215,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Footer, {}, void 0, false, {
                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                    lineNumber: 183,
+                    lineNumber: 227,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-            lineNumber: 169,
+            lineNumber: 213,
             columnNumber: 7
         }, this);
     }
-    if (!careerPath) return null;
+    if (!careerPath) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "min-h-screen bg-gray-50 flex items-center justify-center",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "text-center",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    className: "text-gray-600",
+                    children: "No career path data available"
+                }, void 0, false, {
+                    fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                    lineNumber: 236,
+                    columnNumber: 11
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                lineNumber: 235,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+            lineNumber: 234,
+            columnNumber: 7
+        }, this);
+    }
     const roadmap = [
         careerPath.phase_1,
         careerPath.phase_2,
         careerPath.phase_3,
         careerPath.phase_4
-    ];
+    ].filter(Boolean);
+    if (roadmap.length === 0) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "min-h-screen bg-gray-50",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Header, {}, void 0, false, {
+                    fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                    lineNumber: 247,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
+                    className: "container mx-auto px-4 py-16",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "max-w-2xl mx-auto text-center",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                className: "text-4xl font-bold text-gray-900 mb-4",
+                                children: "Career Path"
+                            }, void 0, false, {
+                                fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                lineNumber: 250,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                className: "text-xl text-red-600 mb-8",
+                                children: "Invalid career path data. Please try again."
+                            }, void 0, false, {
+                                fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                lineNumber: 251,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                                href: "/quiz",
+                                className: "bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block",
+                                children: "Retake Quiz →"
+                            }, void 0, false, {
+                                fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                lineNumber: 252,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                        lineNumber: 249,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                    lineNumber: 248,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Footer, {}, void 0, false, {
+                    fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                    lineNumber: 260,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+            lineNumber: 246,
+            columnNumber: 7
+        }, this);
+    }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "min-h-screen bg-white",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Header, {}, void 0, false, {
                 fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                lineNumber: 194,
+                lineNumber: 267,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -517,26 +725,34 @@ function CareerPathPage() {
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "text-center mb-12",
                             children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4",
+                                    children: "✨ AI Generated"
+                                }, void 0, false, {
+                                    fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                    lineNumber: 271,
+                                    columnNumber: 13
+                                }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                     className: "text-4xl font-bold text-gray-900 mb-4",
                                     children: "Your Personalized Career Path"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                    lineNumber: 198,
+                                    lineNumber: 274,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-gray-600",
-                                    children: "This path was generated based on your unique answers and preferences"
+                                    className: "text-gray-600 text-lg",
+                                    children: "This path was generated by AI based on your unique quiz answers and preferences"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                    lineNumber: 199,
+                                    lineNumber: 275,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                            lineNumber: 197,
+                            lineNumber: 270,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -546,23 +762,23 @@ function CareerPathPage() {
                                     index: index
                                 }, index, false, {
                                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                    lineNumber: 204,
+                                    lineNumber: 280,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                            lineNumber: 202,
+                            lineNumber: 278,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "mt-12 bg-gray-50 p-8 rounded-xl border border-gray-200 text-center",
+                            className: "mt-12 bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-xl border-2 border-blue-200 text-center",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                     className: "text-2xl font-bold text-gray-900 mb-4",
                                     children: "Ready to Start Your Journey?"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                    lineNumber: 209,
+                                    lineNumber: 285,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -570,19 +786,19 @@ function CareerPathPage() {
                                     children: "Track your progress and update your profile"
                                 }, void 0, false, {
                                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                    lineNumber: 210,
+                                    lineNumber: 286,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "flex gap-4 justify-center",
+                                    className: "flex flex-wrap gap-4 justify-center",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                             href: "/profile",
-                                            className: "bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block",
+                                            className: "bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block shadow-lg hover:shadow-xl",
                                             children: "Go to Profile →"
                                         }, void 0, false, {
                                             fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                            lineNumber: 212,
+                                            lineNumber: 288,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
@@ -591,41 +807,77 @@ function CareerPathPage() {
                                             children: "Retake Quiz"
                                         }, void 0, false, {
                                             fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                            lineNumber: 218,
+                                            lineNumber: 294,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: async ()=>{
+                                                setLoading(true);
+                                                setCareerPath(null);
+                                                setError(null);
+                                                try {
+                                                    const response = await fetch("/api/career-path", {
+                                                        method: "POST",
+                                                        headers: {
+                                                            "Content-Type": "application/json"
+                                                        }
+                                                    });
+                                                    if (!response.ok) {
+                                                        const errorData = await response.json().catch(()=>({}));
+                                                        throw new Error(errorData.error || "Failed to regenerate career path");
+                                                    }
+                                                    const data = await response.json();
+                                                    if (data && data.phase_1 && data.phase_2 && data.phase_3 && data.phase_4) {
+                                                        setCareerPath(data);
+                                                    } else {
+                                                        throw new Error("Invalid career path data received");
+                                                    }
+                                                } catch (err) {
+                                                    console.error("[v0] Error regenerating career path:", err);
+                                                    setError(err instanceof Error ? err.message : "Failed to regenerate career path");
+                                                } finally{
+                                                    setLoading(false);
+                                                }
+                                            },
+                                            className: "border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-purple-50 transition-colors inline-block",
+                                            children: "🔄 Regenerate Path"
+                                        }, void 0, false, {
+                                            fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
+                                            lineNumber: 300,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                                    lineNumber: 211,
+                                    lineNumber: 287,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                            lineNumber: 208,
+                            lineNumber: 284,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                    lineNumber: 196,
+                    lineNumber: 269,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                lineNumber: 195,
+                lineNumber: 268,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Downloads$2f$aicareermentor$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Footer, {}, void 0, false, {
                 fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-                lineNumber: 228,
+                lineNumber: 340,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Downloads/aicareermentor/app/career-path/page.tsx",
-        lineNumber: 193,
+        lineNumber: 266,
         columnNumber: 5
     }, this);
 }

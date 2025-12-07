@@ -32,7 +32,7 @@ export default function SignUpPage() {
     try {
       const supabase = createClient()
 
-      const { error: signUpError } = await supabase.auth.signUp({
+      const { data, error: signUpError } = await supabase.auth.signUp({
         email,
         password,
         options: {
@@ -42,6 +42,8 @@ export default function SignUpPage() {
 
       if (signUpError) throw signUpError
 
+      // Refresh router to update auth state
+      router.refresh()
       router.push("/auth/sign-up-success")
     } catch (error: unknown) {
       if (error instanceof Error) {

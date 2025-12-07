@@ -49,3 +49,5 @@ ollama pull llama3.2
 - `npm run build` - Créer une version de production
 - `npm start` - Démarrer la version de production
 
+
+
