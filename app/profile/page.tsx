@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { createClient } from "@/lib/supabase/client"
@@ -11,9 +12,7 @@ function Header() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-xl text-white">🎓</span>
-            </div>
+            <Image src="/icon-dark-32x32.png" alt="AI Career Mentor" width={40} height={40} className="rounded-lg" />
             <span className="text-2xl font-bold text-blue-600">AI Career Mentor</span>
           </Link>
           <div className="hidden md:flex items-center space-x-8">

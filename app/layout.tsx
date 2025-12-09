@@ -9,27 +9,15 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: 'AI Career Mentor - Your Personal Career Guide',
   description: 'Discover your ideal career path with AI-powered guidance. Take our personalized quiz and get tailored career recommendations.',
-  generator: 'v0.app',
+  generator: 'app.careermentor.ai',
   icons: {
     icon: [
       {
-        url: '/favicon.png',
+        url: '/icon-dark-32x32.png',
         type: 'image/png',
       },
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
     ],
-    apple: '/apple-icon.png',
+    apple: '/icon-dark-32x32.png',
   },
 }
 
