@@ -2,6 +2,8 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { createClient } from "@/lib/supabase/client"
 
 // Header Component
 function Header() {
@@ -61,6 +63,15 @@ function Header() {
 
 // Hero Component
 function Hero() {
+  const router = useRouter()
+
+  const handleStartQuiz = async () => {
+    const supabase = createClient()
+    // Always sign out so the login/signup screen appears before the quiz
+    await supabase.auth.signOut()
+    router.push("/auth/login")
+  }
+
   return (
     <section className="bg-gradient-to-br from-blue-600 to-purple-600 text-white py-20">
       <div className="container mx-auto px-4">
@@ -70,12 +81,12 @@ function Hero() {
             Let AI guide you to a fulfilling career based on your unique skills, interests, and aspirations
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/quiz"
+            <button
+              onClick={handleStartQuiz}
               className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors inline-block"
             >
               Start Your Career Quiz →
-            </Link>
+            </button>
             <button
               onClick={() => document.getElementById("features").scrollIntoView({ behavior: "smooth" })}
               className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-lg font-semibold transition-colors"

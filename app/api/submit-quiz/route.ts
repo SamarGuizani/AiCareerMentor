@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { randomUUID } from "crypto"
 
 export const runtime = "nodejs"
 
@@ -18,7 +19,7 @@ async function callOllama(prompt: string): Promise<string> {
         prompt: prompt,
         stream: false,
         options: {
-          temperature: 0.7,
+          temperature: 0.9, // slightly higher for more variety
           num_predict: 2000,
         },
       }),
@@ -116,6 +117,8 @@ export async function POST(req: Request) {
       })
       .join("\n\n")
 
+    const variationSeed = randomUUID()
+
     const systemPrompt = `Tu es un assistant AI de carrière expert en informatique et ingénierie.
 Analyse les réponses du quiz de l'utilisateur et fournis des recommandations de carrière détaillées.
 
@@ -131,7 +134,8 @@ Sois spécifique, pratique et adapté au marché du travail tunisien et europée
     const userPrompt = `Réponses du quiz de l'utilisateur:
 ${formattedAnswers}
 
-Génère mes recommandations de carrière personnalisées en JSON valide basé sur ces réponses.`
+Génère mes recommandations de carrière personnalisées en JSON valide basé sur ces réponses.
+Pour éviter toute réponse générique, introduis des nuances liées au contexte des réponses. Utilise cette graine de variation pour personnaliser l'angle d'analyse: ${variationSeed}. Ne mentionne jamais cette graine dans la sortie.`
 
     const fullPrompt = `${systemPrompt}\n\n${userPrompt}`
 

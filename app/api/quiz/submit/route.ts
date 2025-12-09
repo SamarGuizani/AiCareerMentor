@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server"
 import { type NextRequest, NextResponse } from "next/server"
+import { randomUUID } from "crypto"
 
 export const runtime = "nodejs"
 
@@ -19,7 +20,7 @@ async function callOllama(prompt: string): Promise<string> {
         prompt: prompt,
         stream: false,
         options: {
-          temperature: 0.7,
+          temperature: 0.9, // slightly higher for variety
           num_predict: 2000,
         },
       }),
@@ -110,6 +111,8 @@ export async function POST(request: NextRequest) {
       q4,
       q5,
     }
+
+    const variationSeed = randomUUID()
 
     const aiPrompt = `Based on these career assessment answers, generate personalized career suggestions for someone in Europe and Tunisia.
 

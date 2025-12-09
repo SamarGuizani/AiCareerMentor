@@ -1,7 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
+import { createClient } from "@/lib/supabase/client"
 
 function Header() {
   return (
@@ -164,11 +166,78 @@ function Footer() {
 
 export default function ProfilePage() {
   const [profile, setProfile] = useState({
-    name: "John Doe",
-    email: "john@example.com",
-    phone: "+1 (555) 123-4567",
-    location: "San Francisco, CA",
+    name: "",
+    email: "",
+    phone: "",
+    location: "",
   })
+  const [history, setHistory] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const router = useRouter()
+
+  useEffect(() => {
+    const fetchProfileAndHistory = async () => {
+      const supabase = createClient()
+      const {
+        data: { user },
+      } = await supabase.auth.getUser()
+
+      if (!user) {
+        router.push("/auth/login")
+        return
+      }
+
+      try {
+        const [profileRes, historyRes] = await Promise.all([fetch("/api/profile"), fetch("/api/quiz/history")])
+
+        if (profileRes.ok) {
+          const profileData = await profileRes.json()
+          setProfile({
+            name: profileData.full_name || profileData.name || "",
+            email: profileData.email || user.email || "",
+            phone: profileData.phone || "",
+            location: profileData.location || "",
+          })
+        }
+
+        if (historyRes.ok) {
+          const historyData = await historyRes.json()
+          setHistory(historyData.history || [])
+        } else {
+          setHistory([])
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to load profile")
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchProfileAndHistory()
+  }, [router])
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading profile...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <p className="text-red-600 font-semibold">Unable to load profile</p>
+          <p className="text-gray-600">{error}</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -176,7 +245,34 @@ export default function ProfilePage() {
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto">
           <h1 className="text-4xl font-bold text-gray-900 mb-12">My Profile</h1>
-          <ProfileForm profile={profile} onUpdate={setProfile} />
+          <div className="space-y-8">
+            <ProfileForm profile={profile} onUpdate={setProfile} />
+
+            <div className="bg-gray-50 p-8 rounded-xl border border-gray-200">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-2xl font-bold text-gray-900">Quiz History</h2>
+                <span className="text-sm text-gray-500">Latest first</span>
+              </div>
+
+              {history.length === 0 ? (
+                <p className="text-gray-600">No quiz attempts yet. Complete the quiz to see your history.</p>
+              ) : (
+                <div className="space-y-4">
+                  {history.map((entry: any) => (
+                    <div key={entry.id} className="bg-white border border-gray-200 rounded-lg p-4">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm text-gray-500">
+                          {new Date(entry.created_at).toLocaleString()}
+                        </span>
+                        <span className="text-xs px-2 py-1 bg-blue-100 text-blue-700 rounded-full">AI result</span>
+                      </div>
+                      <pre className="whitespace-pre-wrap text-gray-800 text-sm overflow-x-auto">{entry.ai_result}</pre>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </main>
       <Footer />
